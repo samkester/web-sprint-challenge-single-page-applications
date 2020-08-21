@@ -112,7 +112,7 @@ const App = () => {
       <header>
         <h1>Lambda Eats</h1>
         <nav>
-          <NavLink to="/">Home</NavLink>
+          <NavLink exact to="/">Home</NavLink>
           <NavLink to="/order">Order</NavLink>
           <NavLink to="/review">Review</NavLink>
         </nav>
