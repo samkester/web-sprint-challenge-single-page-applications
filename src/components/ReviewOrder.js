@@ -10,7 +10,7 @@ const ReviewOrder = ({order}) => {
                 result.push(i.split("_")[1]);
             }
         }
-        return result.join();
+        return result.join(", ");
     }
 
     return(

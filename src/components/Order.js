@@ -7,6 +7,7 @@ const Order = ({values, errors, setValue, reset, submit}) => {
     const [buttonEnabled, setButtonEnabled] = useState(false);
 
     const wrappedSubmit = event => {
+        console.log("do the thing");
         event.preventDefault();
         submit();
     }
@@ -61,7 +62,7 @@ const Order = ({values, errors, setValue, reset, submit}) => {
                 <div>{errors.name}</div>
                 <div>{errors.size}</div>
             </div>
-            <button className="hero" disabled={!buttonEnabled}>Submit Order</button>
+            <button className="hero" disabled={!buttonEnabled} onClick={wrappedSubmit}>Submit Order</button>
             <button onClick={reset}>Reset Order</button>
         </div>
     );

@@ -7,9 +7,9 @@ const Review = ({orders}) => {
         <div>
             <h2>Review Your Orders</h2>
             {orders && orders.map(order => 
-                <ReviewOrder key="order.id" order={order} />
+                <ReviewOrder key={order.id} order={order} />
             )}
-            {orders.count > 0 ? 
+            {orders.length > 0 ? 
             <Link to="/order">Add another order</Link>
             :
             <div>You don't have any orders yet. Why not <Link to="/order">create one?</Link></div>

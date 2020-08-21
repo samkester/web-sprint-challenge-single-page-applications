@@ -44,8 +44,12 @@ const App = () => {
   }
 
   const submitOrder = () => {
+    console.log(formValues);
+
     Axios.post(data.pizzaAPI, formValues)
-    .then(response => setOrders(orders.concat(response.data)))
+    .then(response => {
+      console.log(response);
+      setOrders(orders.concat(response.data));})
     .catch(error => console.log(error))
     .finally(resetOrder());
   };
