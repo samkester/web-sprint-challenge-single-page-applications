@@ -8,10 +8,21 @@ import data from "./data/data";
 import orderSchema from "./data/orderSchema";
 import * as Yup from "yup";
 
-const defaultFormValues = {
-  name: "",
-  size: "",
-  instructions: "",
+const defaultToppingValues = () => {
+  const result = {};
+  data.toppings.forEach(topping => result[`topping_${topping}`] = false)
+  return result;
+}
+
+const defaultFormValues = () => {
+  const result = {
+    name: "",
+    size: "",
+    instructions: "",
+  };
+  const toppings = defaultToppingValues();
+  
+  return {...result, ...toppings};
 };
 
 const defaultFormErrors = {
@@ -20,9 +31,12 @@ const defaultFormErrors = {
 };
 
 const App = () => {
-  const [formValues, setFormValues] = useState(defaultFormValues);
+  const [formValues, setFormValues] = useState(defaultFormValues());
   const [formErrors, setFormErrors] = useState(defaultFormErrors);
   const [orders, setOrders] = useState([]);
+
+  //console.log(defaultFormValues());
+  //console.log(formValues);
 
   const history = useHistory();
 
