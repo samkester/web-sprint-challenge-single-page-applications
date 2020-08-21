@@ -7,6 +7,7 @@ import Axios from "axios";
 import data from "./data/data";
 import orderSchema from "./data/orderSchema";
 import * as Yup from "yup";
+import styled from "styled-components";
 
 const defaultToppingValues = () => {
   const result = {};
@@ -29,6 +30,18 @@ const defaultFormErrors = {
   name: "",
   size: data.errors.BAD_SIZE,
 };
+
+const StyledApp = styled.div`
+  color: ${props => props.theme.color.main};
+  background-color: ${props => props.theme.backgroundColor.main};
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 const App = () => {
   const [formValues, setFormValues] = useState(defaultFormValues());
@@ -73,7 +86,7 @@ const App = () => {
   };
   
   return (
-    <>
+    <StyledApp>
       <h1>Lambda Eats</h1>
       <nav>
         <NavLink to="/">Home</NavLink>
@@ -91,7 +104,7 @@ const App = () => {
           <Home />
         </Route>
       </Switch>
-    </>
+    </StyledApp>
   );
 };
 export default App;
