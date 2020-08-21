@@ -5,40 +5,72 @@ import orderSchema from "../data/orderSchema";
 import styled from "styled-components";
 
 const StyledOrder = styled.div`
-  color: ${props => props.theme.color.header};
-  background-color: ${props => props.theme.backgroundColor.header};
+    color: ${props => props.theme.color.header};
+    background-color: ${props => props.theme.backgroundColor.header};
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  border-radius: 1rem;
-  margin: ${props => props.theme.margin};
-  padding: ${props => props.theme.padding};
-
-  h2{
-    margin-bottom: 2rem;
-  }
-
-  a{
-    margin-bottom: 2rem;
-    color: currentColor;
-  }
-
-  input{
-    margin: ${props => props.theme.padding};
-  }
-
-  button{
-    margin: ${props => props.theme.padding};
-    padding: ${props => props.theme.padding};
-    color: currentColor;
-    border: 2px solid currentColor;
-    font-size: 1.6rem;
-    background-color: transparent;
     border-radius: 1rem;
-  }
+    margin: ${props => props.theme.margin};
+    padding: ${props => props.theme.padding};
+
+    h2{
+        margin-bottom: 2rem;
+    }
+
+    a{
+        margin-bottom: 2rem;
+        color: currentColor;
+    }
+
+    input{
+        margin: ${props => props.theme.padding};
+    }
+
+    div.errorList{
+        color: ${props => props.theme.color.active};
+        font-size: 1.8rem;
+    }
+
+    div.checkbox-box{
+        input{
+            margin: 0.5em;
+            margin-right: 1.5em;
+        }
+    }
+
+    button{
+        margin: ${props => props.theme.padding};
+        padding: 0.5em 1em;
+        color: currentColor;
+        border: 2px solid currentColor;
+        font-size: 1.6rem;
+        background-color: transparent;
+        border-radius: 1rem;
+
+        :hover{
+            color: ${props => props.theme.color.highlight};
+            background-color: ${props => props.theme.backgroundColor.highlight};
+        }
+    }
+
+    button.hero{
+        color: ${props => props.theme.color.active};
+        background-color: ${props => props.theme.backgroundColor.active};
+
+        :hover{
+            color: ${props => props.theme.color.highlight};
+            background-color: ${props => props.theme.backgroundColor.highlight};
+        }
+
+        :disabled{
+            color: ${props => props.theme.color.header};
+            background-color: ${props => props.theme.backgroundColor.header};
+        }
+    }
 `;
 
 const Order = ({values, errors, setValue, reset, submit}) => {
@@ -80,7 +112,7 @@ const Order = ({values, errors, setValue, reset, submit}) => {
                         {data.sizes.map(size => <option key={size} value={size}>{size}</option>)}
                     </select>
                 </label>
-                <div>
+                <div className="checkbox-box">
                     <p>Toppings (check one or more):</p>
                     {data.toppings.map(topping => 
                         <label key={topping}>
