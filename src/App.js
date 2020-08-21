@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Switch, NavLink, Route} from "react-router-dom";
+import {Switch, NavLink, Route, useHistory} from "react-router-dom";
 import Home from "./components/Home";
 import Review from "./components/Review";
 import Order from "./components/Order";
@@ -24,6 +24,8 @@ const App = () => {
   const [formErrors, setFormErrors] = useState(defaultFormErrors);
   const [orders, setOrders] = useState([]);
 
+  const history = useHistory();
+
   const setFormValue = (name, value) => {
     setFormValues({...formValues, [name]: value});
 
@@ -44,12 +46,14 @@ const App = () => {
   }
 
   const submitOrder = () => {
-    console.log(formValues);
+    //console.log(formValues);
 
     Axios.post(data.pizzaAPI, formValues)
     .then(response => {
-      console.log(response);
-      setOrders(orders.concat(response.data));})
+      //console.log(response);
+      setOrders(orders.concat(response.data));
+      history.push("/review");
+    })
     .catch(error => console.log(error))
     .finally(resetOrder());
   };

@@ -7,7 +7,7 @@ const Order = ({values, errors, setValue, reset, submit}) => {
     const [buttonEnabled, setButtonEnabled] = useState(false);
 
     const wrappedSubmit = event => {
-        console.log("do the thing");
+        //console.log("do the thing");
         event.preventDefault();
         submit();
     }
