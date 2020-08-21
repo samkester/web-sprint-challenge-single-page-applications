@@ -29,13 +29,13 @@ const Order = ({values, errors, setValue, reset, submit}) => {
                     Size:
                     <select name="size" value={values.size} onChange={changeInput}>
                         <option value="">-- select a size --</option>
-                        {data.sizes.map(size => <option value={size}>{size}</option>)}
+                        {data.sizes.map(size => <option key={size} value={size}>{size}</option>)}
                     </select>
                 </label>
                 <div>
                     <p>Toppings (check one or more):</p>
                     {data.toppings.map(topping => 
-                        <label>
+                        <label key={topping}>
                             {topping}
                             <input type="checkbox"
                             name={`topping_${topping}`}

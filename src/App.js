@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import {Switch, Link, NavLink, Route} from "react-router-dom";
+import {Switch, NavLink, Route} from "react-router-dom";
 import Home from "./components/Home";
 import Review from "./components/Review";
 import Order from "./components/Order";
 import Axios from "axios";
 import data from "./data/data";
+import orderSchema from "./data/orderSchema";
+import * as Yup from "yup";
 
 const defaultFormValues = {
   name: "",
@@ -13,8 +15,8 @@ const defaultFormValues = {
 };
 
 const defaultFormErrors = {
-  name: "Please enter your name.",
-  size: "Please select a size.",
+  name: "",
+  size: data.errors.BAD_SIZE,
 };
 
 const App = () => {
@@ -24,7 +26,17 @@ const App = () => {
 
   const setFormValue = (name, value) => {
     setFormValues({...formValues, [name]: value});
-  };
+
+    //console.log(orderSchema);
+
+    if(orderSchema._nodes.includes(name))
+      {
+      Yup.reach(orderSchema, name)
+      .validate(value)
+      .then(() => setFormErrors({...formErrors, [name]: ""}))
+      .catch(error => setFormErrors({...formErrors, [name]: error.errors[0]}))
+      }
+    };
 
   const resetOrder = () => {
     setFormValues(defaultFormValues);
