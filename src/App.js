@@ -40,6 +40,7 @@ const App = () => {
 
   const resetOrder = () => {
     setFormValues(defaultFormValues);
+    setFormErrors(defaultFormErrors);
   }
 
   const submitOrder = () => {

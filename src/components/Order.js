@@ -1,8 +1,11 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import data from "../data/data";
+import orderSchema from "../data/orderSchema";
 
 const Order = ({values, errors, setValue, reset, submit}) => {
+    const [buttonEnabled, setButtonEnabled] = useState(false);
+
     const wrappedSubmit = event => {
         event.preventDefault();
         submit();
@@ -15,6 +18,10 @@ const Order = ({values, errors, setValue, reset, submit}) => {
     const changeCheckbox = event => {
         setValue(event.target.name, event.target.checked);
     }
+
+    useEffect(() => {
+        orderSchema.isValid(values).then(valid => setButtonEnabled(valid));
+    }, [values]);
 
     return(
         <div>
@@ -54,6 +61,8 @@ const Order = ({values, errors, setValue, reset, submit}) => {
                 <div>{errors.name}</div>
                 <div>{errors.size}</div>
             </div>
+            <button className="hero" disabled={!buttonEnabled}>Submit Order</button>
+            <button onClick={reset}>Reset Order</button>
         </div>
     );
 };
