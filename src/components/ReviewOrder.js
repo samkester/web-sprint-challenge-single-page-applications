@@ -5,7 +5,7 @@ const ReviewOrder = ({order}) => {
         const result = [];
         for(let i in order)
         {
-            if(i.includes("topping"))
+            if(i.includes("topping") && order[i])
             {
                 result.push(i.split("_")[1]);
             }
