@@ -41,6 +41,28 @@ const StyledApp = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  header{
+    color: ${props => props.theme.color.header};
+    background-color: ${props => props.theme.backgroundColor.header};
+
+    border-radius: 1rem;
+    padding: ${props => props.theme.padding};
+
+    nav{
+      display: flex;
+      justify-content: space-between;
+
+      a, a:hover{
+        color:currentColor;
+      }
+
+      a:active, a.active{
+        color: ${props => props.theme.color.active};
+        background-color: ${props => props.theme.backgroundColor.active};
+      }
+    }
+  }
 `;
 
 const App = () => {
@@ -87,12 +109,14 @@ const App = () => {
   
   return (
     <StyledApp>
-      <h1>Lambda Eats</h1>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/order">Order</NavLink>
-        <NavLink to="/review">Review</NavLink>
-      </nav>
+      <header>
+        <h1>Lambda Eats</h1>
+        <nav>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/order">Order</NavLink>
+          <NavLink to="/review">Review</NavLink>
+        </nav>
+      </header>
       <Switch>
         <Route path="/review">
           <Review orders={orders} />
