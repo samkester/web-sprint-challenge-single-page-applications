@@ -2,7 +2,7 @@ describe("Lambda Pizza", () => {
 
     describe("Environment", () => {
         it("can locate test client.", () => {
-            cy.visit("http://localhost:3000/order");
+            cy.visit("http://localhost:3000/pizza");
             cy.url().should("include", "localhost");
         });
     });

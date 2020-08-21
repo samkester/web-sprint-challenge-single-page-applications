@@ -15,8 +15,12 @@ const StyledHome = styled.div`
   margin: ${props => props.theme.margin};
   padding: ${props => props.theme.padding};
 
+  a{
+    color: currentColor
+  }
+
   h2{
-      margin-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -24,7 +28,7 @@ const Home = () => {
     return(
         <StyledHome>
             <h2>Welcome to Lambda Eats</h2>
-            <Link to="/order">Click here to begin.</Link>
+            <Link to="/pizza">Click here to begin.</Link>
         </StyledHome>
     );
 };

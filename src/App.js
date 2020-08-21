@@ -113,7 +113,7 @@ const App = () => {
         <h1>Lambda Eats</h1>
         <nav>
           <NavLink exact to="/">Home</NavLink>
-          <NavLink to="/order">Order</NavLink>
+          <NavLink to="/pizza">Order</NavLink>
           <NavLink to="/review">Review</NavLink>
         </nav>
       </header>
@@ -121,7 +121,7 @@ const App = () => {
         <Route path="/review">
           <Review orders={orders} />
         </Route>
-        <Route path="/order">
+        <Route path="/pizza">
           <Order values={formValues} errors={formErrors} setValue={setFormValue} reset={resetOrder} submit={submitOrder} />
         </Route>
         <Route path="/">

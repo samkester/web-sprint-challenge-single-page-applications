@@ -19,6 +19,10 @@ const StyledReview = styled.div`
   h2{
       margin-bottom: 2rem;
   }
+
+  a{
+      margin-top: ${props => props.theme.margin};
+  }
 `;
 
 const Review = ({orders}) => {
@@ -29,9 +33,9 @@ const Review = ({orders}) => {
                 <ReviewOrder key={order.id} order={order} />
             )}
             {orders.length > 0 ? 
-            <Link to="/order">Add another order</Link>
+            <Link to="/pizza">Add another order</Link>
             :
-            <div>You don't have any orders yet. Why not <Link to="/order">create one?</Link></div>
+            <div>You don't have any orders yet. Why not <Link to="/pizza">create one?</Link></div>
             }
         </StyledReview>
     );
